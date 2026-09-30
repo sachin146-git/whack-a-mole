@@ -1,12 +1,15 @@
 import pygame
 
+
 class Hole:
     def __init__(self, center_x, center_y, hit_size=150):
         self.center_x = center_x
         self.center_y = center_y
+
         # NOTE: intentionally larger than the spacing between holes -
         # see Task 1 in the README.
         self.hit_size = hit_size
+
         self.active = False
         self.timer = 0
 
@@ -17,14 +20,17 @@ class Hole:
     def update(self):
         if self.active:
             self.timer -= 1
+
             if self.timer <= 0:
                 self.active = False
 
     def whack(self):
         was_active = self.active
+
         if was_active:
             self.active = False
             self.timer = 0
+
         return was_active
 
     def rect(self):
